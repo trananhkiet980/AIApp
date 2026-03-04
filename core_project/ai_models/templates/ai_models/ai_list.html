@@ -1,0 +1,17 @@
+{% extends 'ai_models/base.html' %}
+{% block content %}
+<h2>Danh sách Mô hình AI</h2>
+<a href="{% url 'ai_create' %}" class="btn btn-success mb-3">+ Thêm mới</a>
+<table class="table table-bordered">
+    <tr><th>Tên</th><th>Nền tảng</th><th>Hành động</th></tr>
+    {% for ai in models %}
+    <tr>
+        <td>{{ ai.name }}</td><td>{{ ai.framework }}</td>
+        <td>
+            <a href="{% url 'ai_update' ai.pk %}" class="btn btn-sm btn-warning">Sửa</a>
+            <a href="{% url 'ai_delete' ai.pk %}" class="btn btn-sm btn-danger">Xóa</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
